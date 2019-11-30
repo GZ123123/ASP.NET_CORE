@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace QuanLyNhanSu.Controllers
 {
-    public class AccountController : Controller
+    public class TaiKhoanController : Controller
     {
         public IActionResult Index()
         {
