@@ -1,4 +1,4 @@
-﻿# ASP.NET_CORE
+﻿# ASP.NET_CORE - Nhóm 11
 
 Huỳnh Trương Chí Quận - 42.01.104.122
 Nguyễn Thái Sang - 43.01.104.149
