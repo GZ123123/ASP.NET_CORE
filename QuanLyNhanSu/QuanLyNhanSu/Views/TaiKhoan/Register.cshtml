@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles
+{
+}
+
+
+<div class="container-fluid">
+    <section class="container">
+
+        <form method="post" asp-action="Register"> 
+            <div class="container-page">
+                <div class="col-md-6 row">
+                    <h3 class="dark-grey">Registration</h3>
+
+                    <div class="form-group col-lg-12">
+                        <label>Tên Dăng nhập</label>
+                        <input type="text" name="TenDangNhap" class="form-control" id="" value="">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Mật khẩu</label>
+                        <input type="password" name="MatKhau" class="form-control" id="" value="">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Nhập lại mật khẩu</label>
+                        <input type="password" name="MatKhau" class="form-control" id="" value="">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Phòng Ban</label>
+                        @*<input type="" name="" class="form-control" id="" value="">*@
+                        <select name="MaPB">
+                            @foreach (QuanLyNhanSu.Models.PhongBan phongBan in ViewBag.phongBans)
+                            {
+                                <option value="@phongBan.MaPB">@phongBan.TenPB</option>
+                            }
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
