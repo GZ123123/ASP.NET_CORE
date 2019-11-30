@@ -29,6 +29,17 @@ namespace QuanLyNhanSu.Controllers
             );
         }
 
+        public IActionResult MonthsIndex()
+        {
+            return View(
+                new ChamCongIndex()
+                { 
+                    ChamCong = context.ChamCong.ToList(),
+                    NhanVien = context.NhanVien.ToList()
+                }
+            );
+        }
+
         public IActionResult NhapDiem()
         {
             return View(
@@ -96,8 +107,8 @@ namespace QuanLyNhanSu.Controllers
                 return View(
                     new ChamCongSuaDiem()
                     {
-                        ChamCong = edit,
-                        TenNhanVien = context.NhanVien.Where(nv => nv.MaNV == edit.MaNV).FirstOrDefault().TenNV
+                        ChamCong = vm.ChamCong,
+                        TenNhanVien = context.NhanVien.Where(nv => nv.MaNV == vm.ChamCong.MaNV).FirstOrDefault().TenNV
                     }
                 );
             }
