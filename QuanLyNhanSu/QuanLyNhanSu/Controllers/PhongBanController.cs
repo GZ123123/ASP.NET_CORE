@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhanSu.Data;
+using QuanLyNhanSu.Models;
 
 namespace QuanLyNhanSu.Controllers
 {
@@ -14,6 +15,7 @@ namespace QuanLyNhanSu.Controllers
         {
             _context = context;
         }
+        static List<PhongBan> PhongBans = new List<PhongBan>();
         public IActionResult Index()
         {
             return View(_context.PhongBan.ToList());
@@ -22,12 +24,35 @@ namespace QuanLyNhanSu.Controllers
         {
             return View();
         }
-        public IActionResult Edit()
+
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            return View();
+            return View( _context.PhongBan.Where(p => p.Id == id).FirstOrDefault());
         }
-        public IActionResult Delete()
+        [HttpPost]
+        public IActionResult Create(PhongBan pb)
         {
+            _context.Add(pb);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+       [HttpPost]
+        public IActionResult Edit(int id,PhongBan model)
+        {
+            var pb = PhongBans.SingleOrDefault(p => p.Id == id);
+            if (pb != null)
+            {
+                pb.TenPB = model.TenPB;
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            PhongBan delete = _context.PhongBan.Where(p => p.Id == id).FirstOrDefault();
+            _context.PhongBan.Remove(delete);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }

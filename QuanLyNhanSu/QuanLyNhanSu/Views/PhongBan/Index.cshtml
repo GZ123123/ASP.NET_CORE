@@ -33,9 +33,8 @@
                 @Html.DisplayFor(modelItem => item.TenPB)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-               
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-controller="PhongBan" asp-action="Edit" asp-route-id="@item.Id">Chỉnh sửa</a>
+                <a asp-controller="PhongBan" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
             </td>
         </tr>
 }
