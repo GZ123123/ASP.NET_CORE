@@ -36,15 +36,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanSu" asp-action="Index">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="NhanSu" asp-action="Index">Nhân sư</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PhongBan" asp-action="Index">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PhongBan" asp-action="Index">Phòng ban</a>
                         </li>
-                        @if (Context.Session.GetString("Username") != "")
+                        @if (Context.Session.GetString("Username") == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="PhongBan" asp-action="Index">Đăng nhập</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TaiKhoan" asp-action="Login">Đăng nhập</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="TaiKhoan" asp-action="Register">Đăng Ký</a>
                             </li>
                         }
                         else
