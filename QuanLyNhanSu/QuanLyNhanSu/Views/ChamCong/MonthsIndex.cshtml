@@ -1,0 +1,92 @@
+@model QuanLyNhanSu.ViewModels.ChamCongIndex
+@{
+    ViewData["Title"] = "Quản lý chấm công theo tháng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <h2>Quản lý chấm công</h2>
+    <div class="row">
+        <a asp-controller="ChamCong" asp-action="Index" class="button button--back">Quay lại</a>
+    </div>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>Mã nhân viên</th>
+                <th>Tên nhân viên</th>
+                <th>Tháng 1</th>
+                <th>Tháng 2</th>
+                <th>Tháng 3</th>
+                <th>Tháng 4</th>
+                <th>Tháng 5</th>
+                <th>Tháng 6</th>
+                <th>Tháng 7</th>
+                <th>Tháng 8</th>
+                <th>Tháng 9</th>
+                <th>Tháng 10</th>
+                <th>Tháng 11</th>
+                <th>Tháng 12</th>
+                <th>Tổng Điểm</th>
+            </tr>
+            @foreach (var nhanvien in Model.NhanVien)
+            {
+                int diemthang1  = 0;
+                int diemthang2  = 0;
+                int diemthang3  = 0;
+                int diemthang4  = 0;
+                int diemthang5  = 0;
+                int diemthang6  = 0;
+                int diemthang7  = 0;
+                int diemthang8  = 0;
+                int diemthang9  = 0;
+                int diemthang10 = 0;
+                int diemthang11 = 0;
+                int diemthang12 = 0;
+                int tongdiem    = 0;
+
+                foreach (var chamcong in Model.ChamCong)
+                {
+                    if (chamcong.MaNV == nhanvien.MaNV)
+                    {
+                        if (chamcong.NgayLamViec.Month == 1) { diemthang1   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 2) { diemthang2   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 3) { diemthang3   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 4) { diemthang4   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 5) { diemthang5   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 6) { diemthang6   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 7) { diemthang7   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 8) { diemthang8   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 9) { diemthang9   += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 10){ diemthang10  += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 11){ diemthang11  += chamcong.DiemNhanVien;}
+                        if (chamcong.NgayLamViec.Month == 12){ diemthang12  += chamcong.DiemNhanVien;}
+
+                        tongdiem = diemthang1 + diemthang2 + diemthang3 + diemthang4 + diemthang5 + diemthang6 + diemthang7 + diemthang8 + diemthang9 + diemthang10 + diemthang11 + diemthang12;
+                    }
+                }
+
+                <tr>
+                    <td>
+                        @nhanvien.MaNV
+                    </td>
+                    <td>
+                        @nhanvien.TenNV
+                    </td>
+                    <td>@diemthang1</td>
+                    <td>@diemthang2</td>
+                    <td>@diemthang3</td>
+                    <td>@diemthang4</td>
+                    <td>@diemthang5</td>
+                    <td>@diemthang6</td>
+                    <td>@diemthang7</td>
+                    <td>@diemthang8</td>
+                    <td>@diemthang9</td>
+                    <td>@diemthang10</td>
+                    <td>@diemthang11</td>
+                    <td>@diemthang12</td>
+
+                    <td>@tongdiem</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

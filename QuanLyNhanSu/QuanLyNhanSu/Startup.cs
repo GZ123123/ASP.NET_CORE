@@ -43,7 +43,7 @@ namespace QuanLyNhanSu
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<MyDbContext>(dbContextOptionBuilder => dbContextOptionBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MyDbContext>(dbContextOptionBuilder => dbContextOptionBuilder.UseSqlServer(Configuration.GetConnectionString("FOXConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

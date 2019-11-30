@@ -9,5 +9,6 @@ namespace QuanLyNhanSu.ViewModels
     public class ChamCongIndex
     {
        public IEnumerable<ChamCong> ChamCong {get;set;}
+       public IEnumerable<NhanVien> NhanVien {get;set;}
     }
 }
