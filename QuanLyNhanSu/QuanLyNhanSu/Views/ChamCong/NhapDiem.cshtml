@@ -1,4 +1,4 @@
-@model QuanLyNhanSu.ViewModels.ChamCongSuaDiem
+@model QuanLyNhanSu.ViewModels.ChamCongNhapDiem
 @{
     ViewData["Title"] = "Nhập điểm nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,11 +7,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <form asp-controller="ChamCong" asp-action="SuaDiem" method="post">
-                <input type="hidden" asp-for="@Model.ChamCong.Id">
+            <form asp-controller="ChamCong" asp-action="NhapDiem" method="post">
                 <div class="row">
-                    <label asp-for="@Model.TenNhanVien">Nhân viên</label>
-                    <input type="text" class="form-control" value="@Model.TenNhanVien" class="form-control" readonly>
+                    <label asp-for="@Model.ChamCong.MaNV">Nhân viên</label>
+                    <select asp-for="@Model.ChamCong.MaNV" class="form-control">
+                        @foreach (var nhanvien in Model.NhanVien)
+                        {
+                            <option value="@nhanvien.MaNV">
+                                @nhanvien.TenNV
+                            </option>
+                        }
+                    </select>
                 </div>
 
                 <div class="row">
